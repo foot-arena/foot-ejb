@@ -13,6 +13,9 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.classpath
+.project
+.metadata
 
 # External tool builders
 .externalToolBuilders/
@@ -94,3 +97,11 @@ hs_err_pid*
 replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse
+
+target
+logs
+antarcticle-view/antarcticle-web-view/overlays
+
+# Maven release plugin files
+release.properties
+pom.xml.releaseBackup
