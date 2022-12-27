@@ -28,22 +28,23 @@ public class ZoneServiceImpl implements ZoneService {
 	@Override
 	@PermitAll
 	public Zone update(Zone o) {
-		if (eManager.find(Zone.class, o) == null) {
+		if (eManager.find(Zone.class, o.getId()) == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.persist(o);
+		eManager.merge(o);
 		return o;
 	}
 
 	@Override
 	@PermitAll
-	public void delete(Zone o) {
-		if (eManager.find(Zone.class, o) == null) {
+	public void delete(int id) {
+		Zone zone = eManager.find(Zone.class, id);
+		if (zone == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.remove(o);
+		eManager.remove(zone);
 	}
 
 	@Override

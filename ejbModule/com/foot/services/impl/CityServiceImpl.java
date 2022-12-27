@@ -29,22 +29,23 @@ public class CityServiceImpl implements CityService {
 	@Override
 	@PermitAll
 	public City update(City o) {
-		if (eManager.find(City.class, o) == null) {
+		if (eManager.find(City.class, o.getId()) == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.persist(o);
+		eManager.merge(o);
 		return o;
 	}
 
 	@Override
 	@PermitAll
-	public void delete(City o) {
-		if (eManager.find(City.class, o) == null) {
+	public void delete(int id) {
+		City city = eManager.find(City.class, id);
+		if (city == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.remove(o);
+		eManager.remove(city);
 	}
 
 	@Override

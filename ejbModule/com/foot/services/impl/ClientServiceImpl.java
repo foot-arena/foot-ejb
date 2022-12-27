@@ -39,12 +39,12 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	@PermitAll
-	public void delete(Client o) {
-		if (eManager.find(Client.class, o) == null) {
+	public void delete(int id) {
+		if (eManager.find(Client.class, id) == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.remove(o);
+		eManager.remove(id);
 	}
 
 	@Override

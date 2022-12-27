@@ -28,22 +28,22 @@ public class SoccerFieldServiceImpl implements SoccerFieldService {
 	@Override
 	@PermitAll
 	public SoccerField update(SoccerField o) {
-		if (eManager.find(SoccerField.class, o) == null) {
+		if (eManager.find(SoccerField.class, o.getId()) == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.persist(o);
+		eManager.merge(o);
 		return o;
 	}
 
 	@Override
 	@PermitAll
-	public void delete(SoccerField o) {
-		if (eManager.find(SoccerField.class, o) == null) {
+	public void delete(int id) {
+		if (eManager.find(SoccerField.class, id) == null) {
 			new NotFoundException("Entity not found!");
 		}
 
-		eManager.remove(o);
+		eManager.remove(id);
 	}
 
 	@Override
